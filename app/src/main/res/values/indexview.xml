@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="adobe_products">
+        <item>1. Getting Started</item>
+        <item>2. Installation and Configuration</item>
+        <item>3. Language Reference</item>
+        <item>4. Features</item>
+        <item>5. Function Reference</item>
+    </string-array>
+</resources>

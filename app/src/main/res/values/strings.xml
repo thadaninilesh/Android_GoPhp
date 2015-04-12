@@ -1,0 +1,160 @@
+<resources>
+    <string name="app_name">GoPhp</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_getstart">getstart</string>
+    <string name="title_activity_install">install</string>
+    <string name="title_activity_language">language</string>
+    <string name="title_activity_features">features</string>
+    <string name="title_activity_functions">functions</string>
+
+    <!--getstart-->
+    <string name="getstart1">
+        &#8658; Introduction
+    </string>
+    <string name="getstart2">
+        PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML.\n\n
+        Instead of lots of commands to output HTML (as seen in C or Perl), PHP pages contain HTML with embedded code that does something. The PHP code is enclosed in special start and end processing instructions &lt;?php and ?&gt; that allow you to jump into and out of PHP mode.\n\n
+        What distinguishes PHP from something like client-side JavaScript is that the code is executed on the server, generating HTML which is then sent to the client. The client would receive the results of running that script, but would not know what the underlying code was. You can even configure your web server to process all your HTML files with PHP, and then there\'s really no way that users can tell what you have up your sleeve.
+    </string>
+    <string name="getstart3">
+        &#8658; What do you need?
+    </string>
+    <string name="getstart4">
+        In this tutorial we assume that your server has activated support for PHP and that all files ending in .php are handled by PHP. On most servers, this is the default extension for PHP files, but ask your server administrator to be sure. If your server supports PHP, then you do not need to do anything. Just create your .php files, put them in your web directory and the server will automatically parse them for you. There is no need to compile anything nor do you need to install any extra tools. Think of these PHP-enabled files as simple HTML files with a whole new family of magical tags that let you do all sorts of things./n/n
+        Let us say you want to save precious bandwidth and develop locally. In this case, you will want to install a web server, such as &gt;&gt; Apache, and of course &gt;&gt; PHP. You will most likely want to install a database as well, such as &gt;&gt; MySQL.\n\n
+        You can either install these individually or choose a simpler way. Our manual has installation instructions for PHP (assuming you already have some web server set up). If you have problems with installing PHP yourself, we would suggest you ask your questions on our &gt;&gt; installation mailing list. If you choose to go on the simpler route, then &gt;&gt; locate a pre-configured package for your operating system, which automatically installs all of these with just a few mouse clicks. It is easy to setup a web server with PHP support on any operating system, including MacOSX, Linux and Windows. On Linux, you may find &gt;&gt; rpmfind and &gt;&gt; PBone helpful for locating RPMs. You may also want to visit &gt;&gt; apt-get to find packages for Debian.
+    </string>
+
+    <!--install-->
+    <string name="install1">
+        &#8658; General Installation Considerations
+    </string>
+    <string name="install2">
+        Before starting the installation, first you need to know what do you want to use PHP for. There are three main fields you can use PHP, as described in the What can PHP do? section:\n\n
+        &gt;Websites and web applications (server-side scripting)\n
+        &gt;Command line scripting\n
+        &gt;Desktop (GUI) applications\n\n
+        For the first and most common form, you need three things: PHP itself, a web server and a web browser. You probably already have a web browser, and depending on your operating system setup, you may also have a web server (e.g. Apache on Linux and MacOS X; IIS on Windows). You may also rent webspace at a company. This way, you don\'t need to set up anything on your own, only write your PHP scripts, upload it to the server you rent, and see the results in your browser.
+    </string>
+    <string name="install3">
+        &#8658; General Configuration
+    </string>
+    <string name="install4">
+        The configuration file (php.ini) is read when PHP starts up. For the server module versions of PHP, this happens only once when the web server is started. For the CGI and CLI versions, it happens on every invocation.\n
+        php.ini is searched for in these locations (in order):\n
+        &gt;SAPI module specific location (PHPIniDir directive in Apache 2, -c command line option in CGI and CLI, php_ini parameter in NSAPI, PHP_INI_PATH environment variable in THTTPD)\n
+        &gt;Windows directory (C:\windows or C:\winnt) (for Windows), or --with-config-file-path compile time option.
+    </string>
+
+    <!--language-->
+    <string name="lang1">
+        &#8658;PHP tags
+    </string>
+    <string name="lang2">
+        When PHP parses a file, it looks for opening and closing tags, which are &lt;?php and ?> which tell PHP to start and stop interpreting the code between them. Parsing in this manner allows PHP to be embedded in all sorts of different documents, as everything outside of a pair of opening and closing tags is ignored by the PHP parser.\n\n
+        PHP also allows for short open tag &lt;? (which is discouraged since it is only available if enabled using the short_open_tag php.ini configuration file directive, or if PHP was configured with the --enable-short-tags option).\n\n
+        If a file is pure PHP code, it is preferable to omit the PHP closing tag at the end of the file.\n
+        &lt;?php\n
+            \t\techo "Hello world";\n
+
+            \t\t// ... more code\n
+
+            \t\techo "Last statement";\n
+
+            \t\t// the script ends here with no PHP closing tag\n\n
+    </string>
+    <string name="lang3">
+        &#8658;Escaping from HTML
+    </string>
+    <string name="lang4">
+        Everything outside of a pair of opening and closing tags is ignored by the PHP parser which allows PHP files to have mixed content. This allows PHP to be embedded in HTML documents, for example to create templates.\n\n
+        &lt;p&gt;This is going to be ignored by PHP and displayed by the browser.&lt;/p&gt;\n
+        &lt;?php echo \'While this is going to be parsed.\'; ?&gt;\n
+        &lt;p&gt;This will also be ignored by PHP and displayed by the browser.&lt;/p&gt;\n
+        This works as expected, because when the PHP interpreter hits the ?&gt; closing tags, it simply starts outputting whatever it finds (except for an immediately following newline - see instruction separation) until it hits another opening tag unless in the middle of a conditional statement in which case the interpreter will determine the outcome of the conditional before making a decision of what to skip over.\n\n
+    </string>
+    <string name="lang5">
+        &#8658;Instruction separation
+    </string>
+    <string name="lang6">
+        As in C or Perl, PHP requires instructions to be terminated with a semicolon at the end of each statement. The closing tag of a block of PHP code automatically implies a semicolon; you do not need to have a semicolon terminating the last line of a PHP block. The closing tag for the block will include the immediately trailing newline if one is present.\n\n
+        &lt;?php echo \'This is a test\'; ?&gt;\n
+        &lt;?php echo \'This is a test\' ?&gt;\n
+        &lt;?php echo \'We omitted the last closing tag\';\n\n
+    </string>
+    <string name="lang7">
+        &#8658;Comments
+    </string>
+    <string name="lang8">
+        PHP supports \'C\', \'C++\' and Unix shell-style (Perl style) comments. For example:
+        &lt;?php
+            echo \'This is a test\'; // This is a one-line c++ style comment\n
+            /* This is a multi line comment\n
+            yet another line of comment */\n
+            echo \'This is yet another test\';\n
+            echo \'One Final Test\'; # This is a one-line shell-style comment\n
+            ?&gt;\n\n
+    </string>
+
+    <!--features-->
+    <string name="feat1">
+        &#8658;HTTP authentication with PHP
+    </string>
+    <string name="feat2">
+        It is possible to use the header() function to send an "Authentication Required" message to the client browser causing it to pop up a Username/Password input window. Once the user has filled in a username and a password, the URL containing the PHP script will be called again with the predefined variables PHP_AUTH_USER, PHP_AUTH_PW, and AUTH_TYPE set to the user name, password and authentication type respectively. These predefined variables are found in the $_SERVER and $HTTP_SERVER_VARS arrays. Both "Basic" and "Digest" (since PHP 5.1.0) authentication methods are supported. See the header() function for more information.\n\n
+        An example script fragment which would force client authentication on a page is as follows:\n
+        &lt;?php\n
+            if (!isset($_SERVER[\'PHP_AUTH_USER\'])) {\n
+            header(\'WWW-Authenticate: Basic realm="My Realm"\');\n
+            header(\'HTTP/1.0 401 Unauthorized\');\n
+            echo \'Text to send if user hits Cancel button\';\n
+            exit;\n
+            } else {\n
+            echo "&lt;p&gt;Hello {$_SERVER[\'PHP_AUTH_USER\']}.&lt;/p&gt;";\n
+            echo "&lt;p&gt;You entered {$_SERVER[\'PHP_AUTH_PW\']} as your password.&lt;/p&gt;";\n
+            }\n
+            ?&gt;\n\n
+    </string>
+    <string name="feat3">
+        &#8658;Cookies
+    </string>
+    <string name="feat4">
+        PHP transparently supports HTTP cookies. Cookies are a mechanism for storing data in the remote browser and thus tracking or identifying return users. You can set cookies using the setcookie() or setrawcookie() function. Cookies are part of the HTTP header, so setcookie() must be called before any output is sent to the browser. This is the same limitation that header() has. You can use the output buffering functions to delay the script output until you have decided whether or not to set any cookies or send any headers.\n\n
+        Any cookies sent to you from the client will automatically be included into a $_COOKIE auto-global array if variables_order contains "C". If you wish to assign multiple values to a single cookie, just add [] to the cookie name.\n\n
+    </string>
+    <string name="feat5">
+        &#8658;Sessions
+    </string>
+    <string name="feat6">
+        Session support in PHP consists of a way to preserve certain data across subsequent accesses. This enables you to build more customized applications and increase the appeal of your web site.\n\n
+    </string>
+
+    <!--func-->
+    <string name="func1">
+        &#8658;Preface
+    </string>
+    <string name="func2">
+        This section of the manual is written for the Hacker: someone thinking about getting their hands dirty, someone who wants an understanding of internals in order to advance their PHP skills, or maybe someone looking to write the next best extension. Whatever the reason, this section will seek to provide a good understanding of the internals of PHP, how to write extensions, how to understand existing code containing mystical macros. All of the important internal functionality is documented here, enough anyway to convince you to read the source.\n\n
+        Out of necessity, this section assumes the reader has a working knowledge of the C programming language, and associated tools, like compilers and terminal emulators and the like. You don\'t need to be the next Alan Turing, but a working knowledge is none the less essential for this section to be of any use. With just that working knowledge, this section should be enough to get you well on the way to earning the title Hacker, and you do have to earn it.\n\n
+    </string>
+    <string name="func3">
+        &#8658;Memory Management
+    </string>
+    <string name="func4">
+        Memory management in the Zend Engine is deceptively simple. There are some APIs to learn, and some concepts behind them to understand, but that\'s about all.\n\n
+        The engine\'s memory management is implemented with features important to a system like PHP. The exact functionality of the engine\'s memory management and the optmizations performed are out of the scope of this document. However, a good understanding of its functionality provides a basis for a good understanding of the rest of the Hacker\'s Guide, and introduce you to terminology and functionality used throughout PHP.\n\n
+        The most important of its features for the Hacker, and the first thing to mention is tracking allocations. Tracking allocations allow the memory manager to avoid leaks, a thorn in the side of most Hackers. When PHP is built in debug mode (--enable-debug), detected leaks are reported, in a perfect world they would never get to deployment.\n\n
+    </string>
+    <string name="func5">
+        &#8658;Introduction to Variables
+    </string>
+    <string name="func6">
+        PHP is a dynamic, loosely typed language, that uses copy-on-write and reference counting.\n\n
+        To clarify what exactly is meant by the statement above: PHP is a high level language, weak typing is implicit of the engines preference to convert, or coerce variables into the required type at execution type. Reference counting is the means by which the engine can deduce when a variable no longer has any references in the users code, and so is able to free the structures associated with the variable.\n\n
+    </string>
+    <string name="title_activity_corephp">corephp</string>
+
+
+</resources>
